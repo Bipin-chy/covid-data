@@ -1,7 +1,7 @@
 .sidebar_container {
   height: 100vh;
   background-color: black;
-  width: 200px;
+  /* width: 200px; */
 }
 
 .sidebar_container .sidebar_content .menu_icon {
@@ -23,7 +23,6 @@
 .sidebar_container .sidebar_content .menu_item a {
   padding: 10px 20px;
   width: 100%;
-  
 }
 
 .sidebar_container .sidebar_content .menu_item a:hover {

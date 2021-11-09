@@ -19,7 +19,7 @@ const Sidebar = () => {
           </div>
 
           <div className="menu_item">
-            <NavLink to="/filter" activeClassName="activeNavLink">
+            <NavLink to="/filter" activeClassName="activeNavLink" exact={true}>
               Filter
             </NavLink>
           </div>
