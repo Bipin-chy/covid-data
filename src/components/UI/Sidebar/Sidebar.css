@@ -1,0 +1,11 @@
+.sidebar_container {
+  height: 100vh;
+  background-color: black;
+  width: 200px;
+}
+
+.sidebar_container .sidebar_content .menu_list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
