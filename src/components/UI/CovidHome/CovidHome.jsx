@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./CovidHome.css";
 import {
   FcDataRecovery,
   GrStatusCritical,
   GiDeathJuice,
 } from "react-icons/all";
+import { CovidTable } from "../CovidTable";
+import { useData } from "../../../dataContexts/dataContexts";
+import axios from "axios";
 
 const CovidHome = () => {
+  const { dataByCountry } = useData();
+ 
+  console.log(dataByCountry);
+
   return (
     <>
       <div className="covid_home_container">
@@ -17,22 +24,25 @@ const CovidHome = () => {
               <p>
                 <FcDataRecovery /> Recovered Cases
               </p>
-              <span>2546</span>
+              <span>{dataByCountry.counts.recovered}</span>
             </div>
 
             <div className="case_card death">
               <p>
                 <GiDeathJuice /> Death Cases
               </p>
-              <span>2546</span>
+              <span>{dataByCountry.counts.deaths}</span>
             </div>
 
-            <div className="case_card critical">
+            <div className="case_card confirmed">
               <p>
-                <GrStatusCritical /> Critical Cases
+                <GrStatusCritical /> Confirmed Cases
               </p>
-              <span>2546</span>
+              <span>{dataByCountry.counts.confirmed}</span>
             </div>
+          </div>
+          <div className="covid_table_container">
+            <CovidTable />
           </div>
         </div>
       </div>

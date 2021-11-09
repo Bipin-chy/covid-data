@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "antd/dist/antd.css";
 import App from "./App";
+import DataProvider from "./dataContexts/dataContexts";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <DataProvider>
     <App />
-  </React.StrictMode>,
+  </DataProvider>,
   document.getElementById("root")
 );

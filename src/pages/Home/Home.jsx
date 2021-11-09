@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { Sidebar } from "../../components/UI";
 import { Route, Switch } from "react-router-dom";
 import { CovidHome } from "../../components/UI/CovidHome";
-// import Router from "./../../routes/router";
+import { CovidTable } from "../../components/UI/CovidTable";
+
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
           <div className="side_content">
             <Switch>
               <Route path="/" component={CovidHome} exact />
-              <Route path="/filter" element={"Hello"} />
+              {/* <Route path="/filter" component={CovidTable} /> */}
             </Switch>
           </div>
         </div>

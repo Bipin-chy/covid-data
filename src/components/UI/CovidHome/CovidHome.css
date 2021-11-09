@@ -37,8 +37,8 @@
   color: #ff0000;
 }
 
-.covid_home_container .covid_home_content .critical p,
-.covid_home_container .covid_home_content .critical span {
+.covid_home_container .covid_home_content .confirmed p,
+.covid_home_container .covid_home_content .confirmed span {
   color: #ffa400;
 }
 
