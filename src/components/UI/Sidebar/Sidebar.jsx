@@ -13,13 +13,13 @@ const Sidebar = () => {
           </div>
 
           <div className="menu_item">
-            <NavLink to="/" exact={true} activeClassName="activeNavLink">
+            <NavLink to="/" activeClassName="activeNavLink" exact={true}>
               Home
             </NavLink>
           </div>
 
           <div className="menu_item">
-            <NavLink to="/filter" activeClassName="activeNavLink" exact={true}>
+            <NavLink to="/filter" activeClassName="activeNavLink">
               Filter
             </NavLink>
           </div>

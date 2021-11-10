@@ -4,9 +4,16 @@ import { Table } from "antd";
 import { useData } from "../../../dataContexts/dataContexts";
 
 const CovidTable = () => {
-//   const { dataByCountry } = useData();
+  const { dataByCountry } = useData();
 
-//   console.log(dataByCountry);
+  const renderData = dataByCountry.items.map((data) => {
+    return {
+      name: data.country_region,
+      recovered: data.timeline.counts.recovered,
+      deaths: data.timeline.counts.deaths,
+      confirmed: data.timeline.counts.confirmed,
+    };
+  });
 
   const columns = [
     {
@@ -23,17 +30,17 @@ const CovidTable = () => {
     },
     {
       title: "Death Cases",
-      dataIndex: "death",
+      dataIndex: "deaths",
       sorter: {
-        compare: (a, b) => a.death - b.death,
+        compare: (a, b) => a.deaths - b.deaths,
         multiple: 2,
       },
     },
     {
-      title: "Critical Cases",
-      dataIndex: "critical",
+      title: "Confirmed Cases",
+      dataIndex: "confirmed",
       sorter: {
-        compare: (a, b) => a.critical - b.critical,
+        compare: (a, b) => a.confirmed - b.confirmed,
         multiple: 1,
       },
     },
@@ -76,11 +83,18 @@ const CovidTable = () => {
 
   return (
     <>
-      <div className="covid_table_container">
-        <div className="covid_table_content">
-          <Table columns={columns} dataSource={data} onChange={onChange} />
+      {Object.keys(dataByCountry).length !== 0 ? (
+        <div className="covid_table_container">
+          <div className="covid_table_content">
+            <Table
+              columns={columns}
+              dataSource={renderData}
+              onChange={onChange}
+              pagination={{ pageSize: 6 }}
+            />
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };
