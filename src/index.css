@@ -30,3 +30,18 @@ a {
   text-decoration: none !important;
   color: var(--secondary-color) !important;
 }
+
+.ant-table-thead > tr > th {
+  color: #ffffff !important;
+  background: #000000 !important;
+  border-bottom: 1px solid #000000 !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* .ant-input-number-input {
+  height: 35px;
+} */

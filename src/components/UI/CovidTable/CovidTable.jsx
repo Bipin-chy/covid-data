@@ -46,50 +46,15 @@ const CovidTable = () => {
     },
   ];
 
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      chinese: 98,
-      math: 60,
-      english: 70,
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      chinese: 98,
-      math: 66,
-      english: 89,
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      chinese: 98,
-      math: 90,
-      english: 70,
-    },
-    {
-      key: "4",
-      name: "Jim Red",
-      chinese: 88,
-      math: 99,
-      english: 89,
-    },
-  ];
-
-  function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
-  }
-
   return (
     <>
       {Object.keys(dataByCountry).length !== 0 ? (
         <div className="covid_table_container">
+          {/* <h4>Cases By Country</h4> */}
           <div className="covid_table_content">
             <Table
               columns={columns}
               dataSource={renderData}
-              onChange={onChange}
               pagination={{ pageSize: 6 }}
             />
           </div>

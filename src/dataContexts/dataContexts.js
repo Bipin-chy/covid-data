@@ -10,7 +10,7 @@ export const useData = () => {
 const DataProvider = ({ children }) => {
   const [dataByCountry, setdataByCountry] = useState([]);
 
-  const getData = () => {
+  const getDataByCountry = () => {
     axios
       .get(
         "https://raw.githack.com/skhatri/covid-19-json-api-data/master/data/latest_counters.json"
@@ -23,7 +23,7 @@ const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getData();
+    getDataByCountry();
   }, []);
 
   const values = {
