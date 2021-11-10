@@ -1,8 +1,0 @@
-.dashboard_container .dashboard_content {
-  display: flex;
-}
-
-.dashboard_container .dashboard_content {
-  display: grid;
-  grid-template-columns: 20% 80%;
-}
