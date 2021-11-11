@@ -5,7 +5,6 @@ import axios from "axios";
 import { Table } from "antd";
 
 const Filter = () => {
-  //   const { dataByDate, getDataByDate(date) } = useData();
   const [date, setdate] = useState();
   const [renderData, setRenderData] = useState([]);
 
@@ -24,22 +23,21 @@ const Filter = () => {
         const data = res.data;
         setdataByDate(data);
         const renderD = data.items.map((data) => {
-            // console.log(
-            //   data.timeline[Object.keys(data.timeline)[0]].confirmed,
-            //   "timeline"
-            // );
-            return {
-              name: data.country_region,
-              recovered: data.timeline[Object.keys(data.timeline)[0]].recovered,
-              deaths: data.timeline[Object.keys(data.timeline)[0]].deaths,
-              confirmed: data.timeline[Object.keys(data.timeline)[0]].confirmed,
-            };
-          });
-          setRenderData(renderD);
-          console.log(renderD, "renderData");
+          // console.log(
+          //   data.timeline[Object.keys(data.timeline)[0]].confirmed,
+          //   "timeline"
+          // );
+          return {
+            name: data.country_region,
+            recovered: data.timeline[Object.keys(data.timeline)[0]].recovered,
+            deaths: data.timeline[Object.keys(data.timeline)[0]].deaths,
+            confirmed: data.timeline[Object.keys(data.timeline)[0]].confirmed,
+          };
+        });
+        setRenderData(renderD);
+        // console.log(renderD, "renderData");
       });
   };
-
 
   useEffect(() => {
     getDataByDate(date);
@@ -82,17 +80,20 @@ const Filter = () => {
   return (
     <>
       <div className="filter_container">
+        <h1>Covid Data</h1>
         <div className="filter_content">
           <DatePicker onChange={onChange} />
-          {/* <button onClick={() => getDataByDate(date)}>filter</button> */}
+
+          <div className="filter_table_container">
+            {Object.keys(dataByDate).length !== 0 ? (
+              <Table
+                columns={columns}
+                dataSource={renderData}
+                pagination={{ pageSize: 6 }}
+              />
+            ) : null}
+          </div>
         </div>
-        {Object.keys(dataByDate).length !== 0 ? (
-          <Table
-            columns={columns}
-            dataSource={renderData}
-            pagination={{ pageSize: 6 }}
-          />
-        ) : null}
       </div>
     </>
   );
