@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Filter.css";
-import { useData } from "../../dataContexts/dataContexts";
 import { DatePicker } from "antd";
 import axios from "axios";
 import { Table } from "antd";
@@ -8,8 +7,9 @@ import { Table } from "antd";
 const Filter = () => {
   //   const { dataByDate, getDataByDate(date) } = useData();
   const [date, setdate] = useState();
+  const [renderData, setRenderData] = useState([]);
+
   const [dataByDate, setdataByDate] = useState([]);
-  //   const [renderData, setRenderdata] = useState();
   const onChange = (date, dateString) => {
     setdate(dateString);
   };
@@ -23,17 +23,23 @@ const Filter = () => {
       .then((res) => {
         const data = res.data;
         setdataByDate(data);
+        const renderD = data.items.map((data) => {
+            // console.log(
+            //   data.timeline[Object.keys(data.timeline)[0]].confirmed,
+            //   "timeline"
+            // );
+            return {
+              name: data.country_region,
+              recovered: data.timeline[Object.keys(data.timeline)[0]].recovered,
+              deaths: data.timeline[Object.keys(data.timeline)[0]].deaths,
+              confirmed: data.timeline[Object.keys(data.timeline)[0]].confirmed,
+            };
+          });
+          setRenderData(renderD);
+          console.log(renderD, "renderData");
       });
   };
 
-  //   const renderData = dataByDate.items.map((data) => {
-  //     return {
-  //       name: data.country_region,
-  //       recovered: data.timeline.counts.recovered,
-  //       deaths: data.timeline.counts.deaths,
-  //       confirmed: data.timeline.counts.confirmed,
-  //     };
-  //   });
 
   useEffect(() => {
     getDataByDate(date);
@@ -78,11 +84,12 @@ const Filter = () => {
       <div className="filter_container">
         <div className="filter_content">
           <DatePicker onChange={onChange} />
+          {/* <button onClick={() => getDataByDate(date)}>filter</button> */}
         </div>
         {Object.keys(dataByDate).length !== 0 ? (
           <Table
             columns={columns}
-            // dataSource={renderData}
+            dataSource={renderData}
             pagination={{ pageSize: 6 }}
           />
         ) : null}

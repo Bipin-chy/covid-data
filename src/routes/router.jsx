@@ -1,8 +1,6 @@
 import React from "react";
 import Home from "./../pages/Home/Home";
 import { Route } from "react-router-dom";
-// import CovidHome from "./../components/UI/CovidHome/CovidHome";
-import { CovidTable } from "../components/UI/CovidTable";
 import Filter from "./../pages/Filter/Filter";
 
 const Router = () => {
