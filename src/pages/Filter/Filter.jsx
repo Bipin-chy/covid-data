@@ -9,6 +9,7 @@ const Filter = () => {
   const [renderData, setRenderData] = useState([]);
 
   const [dataByDate, setdataByDate] = useState([]);
+
   const onChange = (date, dateString) => {
     setdate(dateString);
   };
@@ -23,10 +24,10 @@ const Filter = () => {
         const data = res.data;
         setdataByDate(data);
         const renderD = data.items.map((data) => {
-          // console.log(
-          //   data.timeline[Object.keys(data.timeline)[0]].confirmed,
-          //   "timeline"
-          // );
+          console.log(
+            data.timeline[Object.keys(data.timeline)[0]].confirmed,
+            "timeline"
+          );
           return {
             name: data.country_region,
             recovered: data.timeline[Object.keys(data.timeline)[0]].recovered,
@@ -84,6 +85,8 @@ const Filter = () => {
         <div className="filter_content">
           <DatePicker onChange={onChange} />
 
+          <p>Data By Date</p>
+
           <div className="filter_table_container">
             {Object.keys(dataByDate).length !== 0 ? (
               <Table
@@ -91,7 +94,9 @@ const Filter = () => {
                 dataSource={renderData}
                 pagination={{ pageSize: 6 }}
               />
-            ) : null}
+            ) : (
+              <Table columns={columns} />
+            )}
           </div>
         </div>
       </div>
