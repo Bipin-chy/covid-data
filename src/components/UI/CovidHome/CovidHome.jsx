@@ -9,11 +9,8 @@ import { CovidTable } from "../CovidTable";
 import { useData } from "../../../dataContexts/dataContexts";
 
 const CovidHome = () => {
+  
   const { dataByCountry } = useData();
-
-  // const country_region = items.map(({country_region}) => country_region)
-  // const items = Object.keys(dataByCountry).map(({items}) => items)
-  // console.log(country_region);
 
   return (
     <>
